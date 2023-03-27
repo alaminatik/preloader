@@ -1,0 +1,52 @@
+<img id='loading' src='loading.gif' style='visibility: hidden;height: 50px;'><br>
+<input type="file" name="myfile" id="uploadFile">
+<input type="submit"  id = "upload" value="Upload">    
+
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script>
+$(document).ready(function () {
+
+    $("#upload").click(function () {     
+    //call show loading function here
+        // var myfile = document.getElementById('uploadFile').files[0];
+        var myfile = $('#uploadFile').val();
+        // alert(myfile);
+        
+        showLoading();
+        $.ajax({
+            type: "POST",
+            url: "upload.php",
+            enctype: 'multipart/form-data',
+            data: {
+                file: myfile
+            },
+            success: function () {
+                //call hide function here
+                hideLoading();
+                alert("Data has been Uploaded: ");
+            },
+            error  : function (a) {//if an error occurs
+                hideLoading();
+                alert("An error occured while uploading data.\n error code : "+a.statusText);
+            }
+        });
+    });
+
+  });
+
+</script>
+
+<script>
+    function showLoading(){
+    document.getElementById("loading").style = "visibility: visible;height: 50px;";
+    }
+    function hideLoading(){
+    document.getElementById("loading").style = "visibility: hidden;height: 50px;";
+    }
+</script>
+
+
