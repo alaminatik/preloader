@@ -2,7 +2,7 @@
 -------------
 you have an image loading.gif. put it into img tag and set it's id to 'loading', and then make it invisible.
 
-<img id='loading' src='' style='visibility: hidden;'>
+< img id='loading' src='' style='visibility: hidden;' >
 
 -------------
 You have to create javascript functions to show and hide the loading image. Here's the script:
